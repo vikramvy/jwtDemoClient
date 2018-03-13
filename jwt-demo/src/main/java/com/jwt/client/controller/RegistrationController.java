@@ -37,7 +37,7 @@ public class RegistrationController {
 		 model.addAttribute("form", form);	
 	      return "success";     
 	}
-	return "error";
+	return "errorPage";
 	   }
 
 }

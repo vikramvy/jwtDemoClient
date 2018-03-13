@@ -12,6 +12,7 @@
 </head>
 <body>
   <h1>Patient Insurance Registration Form</h1>
+  <h2>Token ${token}</h2>
   <hr>
 
   <div class="registration">

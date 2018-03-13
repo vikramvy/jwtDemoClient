@@ -10,7 +10,7 @@
   <h1>Error</h1>
   <hr>
 
-  <h2>Your name is ${user.username}</h2>
+  <h2>There is Error in Validating users Token</h2>
 
 </body>
 </html>
