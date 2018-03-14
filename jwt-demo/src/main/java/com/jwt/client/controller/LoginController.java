@@ -2,7 +2,6 @@ package com.jwt.client.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,11 +27,11 @@ public class LoginController {
 			Model model) {
 
 		User user = new User(userName, password);
-	    loginService = new LoginService();
+		user.setRole("admin");
+		loginService = new LoginService();
 		String token = loginService.login(user);
 		if (token != null) {
 			DbService.tokenMap.put("token", token);
-			DbService.tokenMap.put(user.getUsername(), token);
 			model.addAttribute("user", user);
 			model.addAttribute("token", token);
 			return "registration";

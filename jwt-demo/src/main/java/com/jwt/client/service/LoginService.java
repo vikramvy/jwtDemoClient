@@ -5,8 +5,7 @@ import com.jwt.client.model.User;
 
 public class LoginService {
 
-	public String login(User user) {
-
+	public String login(User user) { 
 		final String uri = "http://localhost:8084/token";
 		RestTemplate restTemplate = new RestTemplate();
 		String token = restTemplate.postForObject(uri, user, String.class);
