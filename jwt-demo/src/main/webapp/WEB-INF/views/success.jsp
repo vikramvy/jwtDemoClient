@@ -9,10 +9,9 @@
 </head>
 <body>
 	<h1>Patient Insurance Registration Form</h1>
-	<hr>
 
-	<h2>Congratulations ${form.firstName} ,you have been successfully
-		registered</h2>
+	<p>Congratulations ${form.firstName} ,you have been successfully
+		registered</p>
 	<form action="/" method="post">
 		<tr>
 			<td><input type="submit" value="Cancel"></td>

@@ -10,7 +10,7 @@
   <h1>Error</h1>
   <hr>
 
-  <h2>There is Error in Validating users Token</h2>
+  <p>There is Error in Validating user's Token</p>
 
 </body>
 </html>
