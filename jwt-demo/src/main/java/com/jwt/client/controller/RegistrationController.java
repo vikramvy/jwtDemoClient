@@ -1,20 +1,25 @@
 package com.jwt.client.controller;
 
-import javax.websocket.Session;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.jwt.client.model.RegistrationForm;
 import com.jwt.client.service.RegistrationService;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
+
 
 @Controller
 public class RegistrationController {
-
- RegistrationService registrationService;
+	
+RegistrationService registrationService;
 	
 	@PostMapping("/registration")
 	   public String register(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, 
@@ -32,12 +37,30 @@ public class RegistrationController {
 		form.setPhone(phone);
 		
 		registrationService= new RegistrationService();
-	
+		
 	if (registrationService.register(form))	{
 		 model.addAttribute("form", form);	
-	      return "success";     
+		
+	      return "usersList";     
 	}
 	return "errorPage";
 	   }
 
+	
+	@GetMapping("/usersList")	
+	public ModelAndView getAllRegisteredUsers()
+	{
+		List<RegistrationForm> resultsList = new ArrayList<RegistrationForm>();
+		 resultsList = registrationService.getAllRegisteredUsers();		
+		 if(resultsList.isEmpty()) return null;		
+		ModelAndView  model = new ModelAndView("usersList");
+		resultsList = registrationService.getAllRegisteredUsers();		
+		resultsList.forEach(l->System.out.println(l.toString()));
+		if(resultsList.isEmpty()) return null;
+		model.addObject("lists",resultsList);
+		
+		return model;
+		
+	}
+	
 }

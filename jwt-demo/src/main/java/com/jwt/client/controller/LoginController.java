@@ -30,6 +30,8 @@ public class LoginController {
 		user.setRole("admin");
 		loginService = new LoginService();
 		String token = loginService.login(user);
+		if(DbService.tokenMap!=null && DbService.tokenMap.containsKey("token")) DbService.tokenMap.remove("token");
+		
 		if (token != null) {
 			DbService.tokenMap.put("token", token);
 			model.addAttribute("user", user);
